@@ -1,0 +1,63 @@
+1. display location_id, city and country id by ordering cities in asc order and countries in desc order
+
+	select location_id, city, country_id from locations order by city, country_id desc;
+
+
+2. employees who is an IT programmer and who has more than 5 years of experience
+
+	 SELECT * from employees where hire_date < DATE_SUB(current_date, INTERVAL 5 YEAR) and job_id="IT_PROG" ; 
+
+
+
+3 employees whose salary>5000 and who are sales rep's or employees who belong to dept-60
+
+	select * from employees where salary>5000 and job_id="SA_REP" or department_id=60;
+
+4. Write a query to Select first_name, dept name, deptid,salary  from employees table and departments table  based on all the common column. 
+
+	select e.first_name, d.department_name, d.department_id, e.salary from employees e, departments d 
+	where e.department_id= d.department_id and e.manager_id= d.manager_id;
+
+5. Write a query to Select first_name, dept name, deptid,salary  from employees table and departments table  based on dept id
+
+	select e.first_name, d.department_name, d.department_id, e.salary from employees e, departments d where e.department_id= d.department_id;
+
+6. Write a query to Select  city, firstname, deptname  for an employee 
+
+	select l.city, e.first_name, d.department_name from employees e, departments d, locations l where 
+	e.department_id= d.department_id 
+and d.location_id = l.location_id;
+
+7. Write a query to fetch  empname, deptname and deptid  of all the departments with and without employees.
+
+	select e.first_name, e.last_name, d.department_name, d.department_id from departments d left join 
+	employees e on d.department_id= e.department_id;
+8. query to find min sal under each job category in specific  department.
+
+	select j.job_id, j.min_salary, d.department_name from jobs j, employees e, departments d 
+
+	where j.job_id= e.job_id and e.department_id=d.department_id;
+9. write a query to find location_ids common to department and location table
+
+	select d.location_id from departments d inner join locations l on d.location_id=l.location_id;
+
+10. write a query to fetch employee firstname and street adress (use emp table and locations table)
+
+	select e.first_name, l.street_address from employees e, departments d, locations l where e.department_id = d.department_id and d.location_id = l.location_id
+
+
+
+
+
+
+
+
+
+
+
+
+10. write a query to fetch employee firstname and street adress (use emp table and locations table)
+
+	select e.first_name, l.street_address from employees e, departments d, locations l
+ 
+	where e.department_id= d.department_id and d.location_id=l.location_id;
